@@ -1,0 +1,18 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'Welcome!' %}
+
+{% block page_content %}
+    <style>
+        p { max-width: 600px; }
+    </style>
+
+    <p>
+        <strong>Simple parser parsed {{ news_count }} news!</strong>
+    </p>
+
+    <p>
+        <strong>And executed {{ parser_log_count }} times!</strong>
+    </p>
+{% endblock %}

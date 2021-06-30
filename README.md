@@ -1,12 +1,12 @@
-Simple application for news parsing.
+### Simple application for news parsing.
 For start you need to configure database connection in .env file:
 
 * DATABASE_URL="postgresql://news_parser:12345678@127.0.0.1:5434/news_parser?serverVersion=13&charset=utf8"
 
 After that execute 2 commands:
 
-* bin/console doctrine:database:create
-* bon/console doctrine:migrations:migrate
+* bin/console doctrine:database:create (if you don't created database manually)
+* bin/console doctrine:migrations:migrate
 
 Also you need insert initial data into news_parser.parser with 'RbcParser', for this please run command:
 
@@ -20,4 +20,6 @@ with arguments:
 * interval - Interval between parsing iteration in seconds [default: 10]
 * cycles-num - Number of cycles to execute, 0 for infinity num [default: 2]
 
-So, if you want run it in 'demonized' mode just choose your favourite way for process running in your OS (like system.d, supervizor, nomad e.t.c) and run command with --cycles-num 0 - it will starts infinity loop! But be aware - if app will catch exception it will be down (I suppose that you favorite process manager can restart the process :)).
+So, if you want run it in 'demonized' mode just choose your favourite way for process running in your OS (like system.d, supervizor, nomad e.t.c) and run command with --cycles-num=0 - it will start infinity loop! But be aware - if app will catch exception it will be down (I suppose that you favorite process manager can restart the process :)).
+
+Also, there is simple dashboard with parsed news (based on EasyAdmin symfony bundle). For local view you can run symfony server (symfony:start) and open page $your_host/admin.

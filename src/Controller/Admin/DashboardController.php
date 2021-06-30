@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\News;
 use App\Entity\Parser;
 use App\Entity\ParserLog;
+use App\Repository\NewsRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -18,7 +19,13 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+        $newsCount      = $this->get('doctrine')->getRepository(News::class)->count([]);
+        $parserLogCount = $this->get('doctrine')->getRepository(ParserLog::class)->count([]);
+
+        return $this->render('welcome.html.twig', [
+            'news_count'       => $newsCount,
+            'parser_log_count' => $parserLogCount,
+        ]);
     }
 
     public function configureDashboard(): Dashboard
