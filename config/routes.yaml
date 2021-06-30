@@ -1,0 +1,10 @@
+homepage:
+  path: /
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+  defaults:
+    path: /admin
+    permanent: true
+
+dashboard:
+  path: /admin
+  controller: App\Controller\Admin\DashboardController::index
